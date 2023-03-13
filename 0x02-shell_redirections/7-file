@@ -1,2 +1,2 @@
-#!/bin/bashe
-echo "Best School" > "\*\\'\"Best School\"\'\\*$\?\*\*\*\*\*:)"
+#!/bin/bash
+printf "Best School\n" > "\*\\\'\"Best School\"\'\\\*$\?\*\*\*\*\*:)"
