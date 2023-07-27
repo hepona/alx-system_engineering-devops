@@ -2,8 +2,8 @@
 # This script is displaying The content of the current directory
 
 
-f=$(ls)
-for f in $f
+f="$(pwd)"
+for f in "$f"/*
 do
-	echo "$f"
+	echo "$(basename "$f")"
 done
