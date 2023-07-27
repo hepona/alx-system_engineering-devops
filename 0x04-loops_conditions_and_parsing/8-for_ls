@@ -5,6 +5,6 @@
 f="$(pwd)"
 for f in "$f"/*
 do
-	file=$(basename "$f")
+	file=$(basename "$f" | cut -d'-' -f2)
 	echo "$file"
 done
