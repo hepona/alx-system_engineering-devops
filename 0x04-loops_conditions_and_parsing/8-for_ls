@@ -2,4 +2,8 @@
 # This script is displaying The content of the current directory
 
 
-ls
+f=$(ls)
+for f in $f
+do
+	echo "$f"
+done
