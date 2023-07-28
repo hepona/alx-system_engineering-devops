@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 #this bash script that stops 4-to_infinity_and_beyond process.
 
-p=$(ps aux | grep 4-to_infinity_and_beyond | grep -v grep | awk '{print $2}')
+p=$(pgrep -f 4-to_infinity_and_beyond)
 kill "$p"
