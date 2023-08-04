@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 #Bash script that displays listening ports
 echo "Active Internet connections (only servers)"
 echo "Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name"
