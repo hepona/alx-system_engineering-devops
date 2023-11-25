@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 # Automating my Tasks using Puppet
 file { '/etc/ssh/ssh_config':
-ensure => 'present',
+ensure => present,
 content => "
-  IdentityFile ~/ssh/school
-  PasswordAuthentication no
+  # SSH client configuration
+    Host *
+      IdentityFile ~/ssh/school
+      PasswordAuthentication no
 "
 }
