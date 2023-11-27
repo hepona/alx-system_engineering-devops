@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
+# transfers a file from our client to a server
 if [ "$#" -lt 3 ]; then
-    echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+    echo "Usage: $0 PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
 
 else
     path_file=$1
     ip=$2
     username=$3
-    path_ssh=$4
+    path_sshKey=$4
 
-    cp $"path_file" $"ip"
+    scp -i "$path_sshKey" "$path_file" "$username"@"$ip":~/
 fi
