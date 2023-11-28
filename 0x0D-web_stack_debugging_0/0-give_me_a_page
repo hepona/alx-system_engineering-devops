@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Script that make Apache to run on the container and to return a page containing Hello Holberto
 # docker run -p 8080:80 -d -it holbertonschool/265-0
-docker exec -ti "$(docker ps -q)" /bin/bash -c "apt-get update && apt-get install -y apache2; echo "Hello Holberton" > /var/www/html/index.html ; exit"
+docker exec -ti "$(docker ps -q)" /bin/bash -c "apt-get update && apt-get install -y apache2;service apache2 start; echo "Hello Holberton" > /var/www/html/index.html ; exit"
 # docker stop "$(docker ps -q)"
