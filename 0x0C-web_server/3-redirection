@@ -4,12 +4,13 @@ sudo apt update
 sudo apt install -y nginx
 echo "<p>Hello World!</p>" > /var/www/html/index.html
 
-echo "http{
+sed -i "http{
         server{
             listen 80;
-            location /redirect_me {
+            rewrite /redirect_me {
                 return https://www.youtube.com/watch?v=jIQ6UV2onyI&pp=ygUHbnlhIGNhdA%3D%3D
             }
         }
-    }"| sudo tee /etc/nginx/sites-available/redirect_me
+    }" /etc/nginx/sites-available/default
+
 sudo service nginx start
