@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Script that make Apache to run on the container and to return a page containing Hello Holberto
+docker exec -ti b36965e66d12 /bin/bash
+apt-get update
+apt-get install -y apache2
+echo "Hello Holberton" > /var/www/html/index.html
+docker stop e1fc0d4bbb5d
