@@ -1,1 +1,3 @@
 #!/usr/bin/env bash
+#setup domain name
+echo "hepona.tech"
