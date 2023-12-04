@@ -2,7 +2,6 @@
 #double the number of webservers
 sudo apt update
 sudo apt install -y nginx
-name=$(hostname | cut -d '-' -f2-)
 echo "<p>Hello World!</p>" > /var/www/html/index.html
-echo -e "server {\n\tlocation / {\n\t\tadd_header X-Served-By $(id -u "$(whoami)")-$name;\n\t}\n}" | sudo tee /etc/nginx/sites-available/default
+echo -e "add_header X-Served-By $HOSTNAME;\n" | sudo tee /etc/nginx/nginx.conf
 sudo service nginx start
