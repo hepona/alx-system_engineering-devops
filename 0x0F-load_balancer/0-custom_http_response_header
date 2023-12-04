@@ -3,5 +3,5 @@
 sudo apt update
 sudo apt install -y nginx
 name=$(hostname | cut -d '-' -f2-)
-echo "X-Served-By: '$(id -u "$(whoami)")-$name" | sudo tee /var/www/html/index.html
+echo "X-Served-By: $(id -u "$(whoami)")-$name" | sudo tee /var/www/html/index.html
 sudo service nginx start
