@@ -4,5 +4,5 @@ sudo apt update
 sudo apt install -y nginx
 name=$(hostname | cut -d '-' -f2-)
 echo "<p>Hello World!</p>" > /var/www/html/index.html
-echo -e "server{\nX-Served-By: $(id -u "$(whoami)")-$name\n}" | sudo tee /etc/nginx/nginx.conf
+echo -e "server {\n\tlocation / {\n\t\tadd_header X-Served-By $(id -u "$(whoami)")-$name;\n\t}\n}" | sudo tee /etc/nginx/sites-available/default
 sudo service nginx start
