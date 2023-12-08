@@ -2,6 +2,8 @@
 # Nginx likes port 80
 sudo apt update
 sudo apt install -y nginx
-ufw allow 80
-printf "server {\n\tlisten 80 default_server;\n\tlisten [::]:80 default_server;\n}\n"  >  /etc/nginx/nginx.conf
-# sudo service nginx start
+sudo systemctl enable nginx
+printf "events {}\nhttp {\n\tserver {\n\t\tlisten 80 default_server;\n\t\tlisten [::]:80 default_server;\n\t}\n}\n" > /etc/nginx/nginx.conf
+sudo nginx -t
+sudo systemctl reload nginx
+sudo service nginx start
