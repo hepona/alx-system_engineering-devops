@@ -9,7 +9,7 @@ if [ $# = 2 ]; then
     echo "The subdomain ""$subdomain"" is a ""$record_type"" record and points to ""$destination"""
 
 else
-    subdomain=("www" "web-01" "web-02" "lb-01")
+    subdomain=("www" "lb-01" "web-01" "web-02" )
 
     for rec in "${subdomain[@]}"; do
         destination="$(dig "$rec.$domain" | grep -A1 'ANSWER SECTION:' | tr '\t' '\n' | tail -1)"
