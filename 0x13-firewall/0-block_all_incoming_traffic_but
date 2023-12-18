@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#Block all incoming traffic but
+sudo ufw enable
+sudo ufw deny 22/tcp
+sudo ufw deny 443/tcp
+sudo ufw deny 80/tcp
+
