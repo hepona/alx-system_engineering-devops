@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+sudo useradd "$1"
+sudo -u "$1" -s
+whoami
+sudo -u root -s
