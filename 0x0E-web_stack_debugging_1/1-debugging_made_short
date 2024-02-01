@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
-# Nginx likes port 80
-sudo service nginx start
+# Nginx running, and listening on port 80 but shorter
+service nginx start
+nginx -g 'daemon off;'
+service nginx stop
