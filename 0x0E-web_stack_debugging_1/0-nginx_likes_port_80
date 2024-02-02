@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#nginx like 80
 sudo service nginx start
 
 sleep 5
