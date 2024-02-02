@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
-# Nginx running, and listening on port 80
-sudo apt-get update
-sudo apt-get install nginx -y
+
 sudo service nginx start
+
+sleep 5
+
+if sudo lsof -i :80 | grep LISTEN; then
+    echo "Nginx is running on port 80"
+
+    if curl -s -I http://localhost:80 | grep "HTTP/1.1 200 OK"; then
+        echo "Web page returned HTTP 200"
+    else
+        echo "Web page did not return HTTP 200"
+    fi
+else
+    echo "Nginx is not running on port 80"
+fi
