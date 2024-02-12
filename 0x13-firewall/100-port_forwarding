@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#forwarding
+config="*nat
+:PREROUTING ACCEPT [0:0]
+# forward 202.54.1.1  port 80 to 192.168.1.100:80
+# forward 202.54.1.1  port 443 to 192.168.1.100:443
+-A PREROUTING -i eth0 -d 202.54.1.1   -p tcp --dport 80 -j  DNAT --to-destination 192.168.1.100:80
+-A PREROUTING -i eth0 -d 202.54.1.1   -p tcp --dport 443 -j  DNAT --to-destination 192.168.1.100:443
+# setup routing
+-A POSTROUTING -s 192.168.1.0/24 ! -d 192.168.1.0/24 -j MASQUERADE
+COMMIT"
+echo "$config" >/etc/ufw/before.rules
+
+config2="net.ipv4.ip_forward=1"
+echo "$config2" > /etc/sysctl.conf
+sudo sysctl -p
+sudo systemctl restart ufw
