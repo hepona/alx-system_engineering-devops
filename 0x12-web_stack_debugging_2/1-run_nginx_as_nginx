@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 # Run Nginx as Nginx
-sudo -u nginx systemctl start nginx
+# docker run auxff
+# docker exec auxff /bin/bash ls
+sudo systemctl start nginx
