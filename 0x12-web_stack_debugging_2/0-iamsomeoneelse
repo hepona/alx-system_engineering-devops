@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #Run software as another user
 if (( $# != 1 )); then
-    echo "you should have one arg"
+    echo "Usage: $0 <username>"
     exit 1
 fi
 sudo -u "$1" whoami
