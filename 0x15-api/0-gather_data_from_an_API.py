@@ -21,7 +21,7 @@ else:
             if t["completed"]:
                 count_completed_task += 1
     print(
-        f"Employee {user['name']} is done with tasks ({count_completed_task}/{count_tot_task})"
+        f"Employee {user['name']} is done with tasks({count_completed_task}/{count_tot_task}):"
     )
     for t in todo:
         # print(t["title"])
