@@ -13,19 +13,20 @@ else:
     user = json.loads(userdata.text)
     todo = json.loads((todouser.text))
     # print((todo))
-    count_completed_task = 0
-    count_tot_task = 0
+    c_completed_task = 0
+    c_tot_task = 0
     for t in todo:
         if t["userId"] == int(argv[1]):
-            count_tot_task += 1
+            c_tot_task += 1
             if t["completed"]:
-                count_completed_task += 1
+                c_completed_task += 1
     print(
-        f"Employee {user['name']} is done with tasks({count_completed_task}/{count_tot_task}):"
+        f"Employee {user['name']} is done with \
+tasks({c_completed_task}/{c_tot_task}):"
     )
     for t in todo:
         # print(t["title"])
-        if t["userId"] == int(argv[1]) and t["completed"] == True:
-            print("     ",t["title"])
+        if t["userId"] == int(argv[1]) and t["completed"] is True:
+            print("     ", t["title"])
 # except Exception as e:
 #     print(e)
