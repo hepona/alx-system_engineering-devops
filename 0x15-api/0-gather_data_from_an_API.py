@@ -27,6 +27,6 @@ tasks({c_completed_task}/{c_tot_task}):"
     for t in todo:
         # print(t["title"])
         if t["userId"] == int(argv[1]) and t["completed"] is True:
-            print("     ", t["title"])
+            print("    ", t["title"])
 # except Exception as e:
 #     print(e)
