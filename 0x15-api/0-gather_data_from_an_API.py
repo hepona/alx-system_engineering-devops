@@ -10,8 +10,10 @@ try:
         print("Usage: ./0-gather_data_from_an_API <number>")
     else:
         userdata = r.get(f"https://jsonplaceholder.typicode.com/users/{id}")
-        todouser = r.get(f"https://jsonplaceholder.typicode.com/\
-todos/?userId={id}")
+        todouser = r.get(
+            f"https://jsonplaceholder.typicode.com/\
+todos/?userId={id}"
+        )
         user = json.loads(userdata.text)
         todo = json.loads(todouser.text)
         c_completed_task = [task for task in todo if task["completed"] is True]
