@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """0. Gather data from an API"""
 import json
-import requests as r
+import requests
 from sys import argv
 
 if __name__ == "__main__":
@@ -10,8 +10,8 @@ if __name__ == "__main__":
     if len(argv) != 2 or not id.isdigit():
         print("Usage: ./0-gather_data_from_an_API <number>")
     else:
-        userdata = r.get(f"https://jsonplaceholder.typicode.com/users/{id}")
-        todouser = r.get(
+        userdata = requests.get(f"https://jsonplaceholder.typicode.com/users/{id}")
+        todouser = requests.get(
             f"https://jsonplaceholder.typicode.com/\
 todos/?userId={id}"
             )
