@@ -4,32 +4,22 @@ import json
 import requests as r
 from sys import argv
 
+id = argv[1]
 try:
-    if len(argv) != 2 or not argv[1].isdigit():
+    if len(argv) != 2 or not id.isdigit():
         print("Usage: ./0-gather_data_from_an_API <number>")
     else:
-        userdata = r.get(f"https://jsonplaceholder.typicode.com/users/{argv[1]}")
-        todouser = r.get("https://jsonplaceholder.typicode.com/todos/")
+        userdata = r.get(f"https://jsonplaceholder.typicode.com/users/{id}")
+        todouser = r.get(f"https://jsonplaceholder.typicode.com/\
+todos/?userId={id}")
         user = json.loads(userdata.text)
-        todo = json.loads((todouser.text))
-        # print((todo))
-        c_completed_task = 0
-        c_tot_task = 0
-        for t in todo:
-            if t["userId"] == int(argv[1]):
-                c_tot_task += 1
-                if t["completed"]:
-                    c_completed_task += 1
-        EMPLOYEE_NAME= user['name']
-        NUMBER_OF_DONE_TASKS=c_completed_task
-        TOTAL_NUMBER_OF_TASKS=c_tot_task
+        todo = json.loads(todouser.text)
+        c_completed_task = [task for task in todo if task["completed"] is True]
         print(
-            f"Employee {EMPLOYEE_NAME} is done with tasks({NUMBER_OF_DONE_TASKS}/{TOTAL_NUMBER_OF_TASKS}):"
+            f"Employee {user['name']} is done with \
+tasks({len(c_completed_task)}/{len(todo)}):"
         )
-        for t in todo:
-            # print(t["title"])
-            if t["userId"] == int(argv[1]) and t["completed"] is True:
-                TASK_TITLE = t["title"]
-                print("\t ",TASK_TITLE)
+        for t in c_completed_task:
+            print("\t " + t["title"])
 except Exception as e:
     print(e)
