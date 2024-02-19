@@ -30,6 +30,6 @@ try:
             # print(t["title"])
             if t["userId"] == int(argv[1]) and t["completed"] is True:
                 TASK_TITLE = t["title"]
-                print("     ",TASK_TITLE)
+                print("\t ",TASK_TITLE)
 except Exception as e:
     print(e)
