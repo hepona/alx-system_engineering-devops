@@ -5,6 +5,7 @@ import requests as r
 from sys import argv
 
 if __name__ == "__main__":
+    filename = argv[1] + ".json"
     id = argv[1]
 
     if len(argv) != 2 or not id.isdigit():
@@ -18,12 +19,13 @@ todos/?userId={id}"
         user = json.loads(userdata.text)
         todo = json.loads(todouser.text)
         # print(user.values())
-        print(f"{{\"{user.get('id')}\"}}: ", end="")
-        print("[{")
-        for i in todo:
-            print(
-                f"\"task\": \"{i.get('title')}\",\"completed\": \
-{i.get('completed')}, \"username\": {user.get('username')}",
-                end=","
-            )
-        print("}]")
+        with open(filename, "w") as f:
+            txt = f"{{\"{user.get('id')}\"}}: "
+            txt += "[{"
+
+            for i in todo:
+                txt += f"\"task\": \"{i.get('title')}\",\"completed\": \
+{i.get('completed')}, \"username\": {user.get('username')}, "
+
+            txt += "}]"
+            f.write(txt)
