@@ -26,9 +26,10 @@ if __name__ == "__main__":
         for t, u in zip(todo, user):
             data[u.get("id")] = [
                 {
+                    "username": u.get("username"),
                     "task": t.get("title"),
                     "completed": t.get("completed"),
-                    "username": u.get("username"),
                 }
             ]
+            print(data)
             json.dump(data, f)
