@@ -20,12 +20,14 @@ todos/?userId={id}"
         todo = json.loads(todouser.text)
         # print(user.values())
         with open(filename, "w") as f:
-            txt = f"{{\"{user.get('id')}\"}}: "
-            txt += "[{"
-
-            for i in todo:
-                txt += f"\"task\": \"{i.get('title')}\",\"completed\": \
-{i.get('completed')}, \"username\": {user.get('username')}, "
-
-            txt += "}]"
-            f.write(txt)
+            data = {
+                id: [
+                    {
+                        "task": i.get("title"),
+                        "completed": i.get("completed"),
+                        "username": user["username"],
+                    }
+                    for i in todo
+                ]
+            }
+            json.dump(data, f)
