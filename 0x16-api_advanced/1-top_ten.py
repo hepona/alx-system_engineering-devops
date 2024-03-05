@@ -2,14 +2,19 @@
 """top ten"""
 import requests
 
+
 def top_ten(subreddit):
-    """top ten posts"""
+    """Prints the titles of the first 10 hot posts from a subreddit."""
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
-    res = requests.get(url)
+    headers = {"User-Agent": "Toto"}
+    res = requests.get(url, headers=headers)
+
     if res.status_code != 200:
-        return None
+        print("None")
+        return
+
     data = res.json()
-    top = []
-    for i in range(10):
-        top.append(data["data"]["children"][i]["data"]["title"])
-    return print(top)
+    top = [post["data"]["title"] for post in data["data"]["children"][:10]]
+
+    for title in top:
+        print(title)
