@@ -1,3 +1,4 @@
+# update ulimit
 exec { 'ulimit':
   command  =>"sed -i 's/^ULIMIT=.*/ULIMIT=\"-n 10000\"/' /etc/default/nginx",
   provider => 'shell',
