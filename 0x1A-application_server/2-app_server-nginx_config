@@ -8,5 +8,4 @@ config="server{
     }
 
 }"
-echo "$config" > /etc/nginx/nginx.conf
-echo "done"
+echo "$config" > /etc/nginx/sites-available/default
