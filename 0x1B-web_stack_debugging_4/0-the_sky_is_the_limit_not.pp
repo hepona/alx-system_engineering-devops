@@ -1,5 +1,5 @@
 exec {"ulimit":
-  command =>"sed -i 'ULIMIT=\"-n 1000\"' /etc/default/nginx",
+  command =>"sed -i 's/^ULIMIT=.*/ULIMIT=\"-n 1000\"/' /etc/default/nginx",
   provider => "shell",
 }
 exec {"restar nginx":
